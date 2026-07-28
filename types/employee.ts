@@ -25,11 +25,13 @@ export interface Employee {
   name: string;
   role: string;
   department: string;
+  status: 'active' | 'inactive' | 'terminated';
   compensation_inr: number; // annual, in INR
   working_hours_per_day: number;
   hire_date: Date | null;
   email: string;
   hourly_rate: number; // computed: compensation / (260 working_days * hours_per_day)
+  tenure_months: number;
 }
 
 // Employee parse result
