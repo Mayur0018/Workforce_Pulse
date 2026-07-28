@@ -3,12 +3,12 @@ import OpenAI from 'openai';
 import { buildSystemPrompt } from '../../../lib/ai/systemPrompt';
 import type { AnalyticsOutput } from '../../../types/analytics';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
 export async function POST(req: NextRequest) {
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json({ error: 'OPENAI_API_KEY not configured in .env.local' }, { status: 503 });
   }
+
+  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
   try {
     const body = await req.json();
