@@ -1,16 +1,17 @@
 'use client';
 import { useState, useCallback } from 'react';
 import { Menu, Sun, Moon, Download } from 'lucide-react';
+import { useMobileNav } from './MobileNavContext';
 
 interface HeaderProps {
   title: string;
   subtitle?: string;
-  onMenuToggle?: () => void;
   onExport?: () => void;
 }
 
-export default function Header({ title, subtitle, onMenuToggle, onExport }: HeaderProps) {
+export default function Header({ title, subtitle, onExport }: HeaderProps) {
   const [isDark, setIsDark] = useState(true);
+  const { toggleMobile } = useMobileNav();
 
   const toggleTheme = useCallback(() => {
     const newTheme = isDark ? 'light' : 'dark';
@@ -23,10 +24,9 @@ export default function Header({ title, subtitle, onMenuToggle, onExport }: Head
       {/* Left: hamburger + title */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
         <button
-          className="btn btn-ghost btn-icon"
-          onClick={onMenuToggle}
+          className="btn btn-ghost btn-icon mobile-menu-btn"
+          onClick={toggleMobile}
           aria-label="Toggle navigation menu"
-          style={{ display: 'none' }}
           id="mobile-menu-btn"
         >
           <Menu size={18} />

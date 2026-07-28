@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Sidebar from '../components/layout/Sidebar';
+import AppLayout from '../components/layout/AppLayout';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -20,12 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="app-layout">
-          <Sidebar />
-          <main className="app-main">
-            {children}
-          </main>
-        </div>
+        <AppLayout>
+          {children}
+        </AppLayout>
       </body>
     </html>
   );
