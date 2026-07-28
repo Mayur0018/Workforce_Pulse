@@ -523,6 +523,8 @@ body::before {
 /* ─── Table ─────────────────────────────────────────────────────────────────── */
 
 .table-wrapper {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -564,6 +566,14 @@ tbody td {
   color: var(--color-text-primary);
   vertical-align: middle;
   white-space: nowrap;
+}
+
+#employee-table {
+  min-width: 980px;
+}
+
+#automation-ranking-table {
+  min-width: 1120px;
 }
 
 /* ─── Score Bar ─────────────────────────────────────────────────────────────── */
@@ -915,19 +925,61 @@ select:focus, input:focus {
 }
 
 @media (max-width: 768px) {
-  :root { --sidebar-width: 0px; }
   .app-main { margin-left: 0; }
-  .sidebar { transform: translateX(-100%); }
+  .sidebar {
+    width: min(240px, calc(100vw - 48px));
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
   .sidebar.mobile-open { transform: translateX(0); }
-  .header { left: 0; }
+  .header {
+    left: 0;
+    padding: 0 var(--space-4);
+  }
   .mobile-menu-btn { display: flex; }
-  .page-content { padding: var(--space-4); }
+  .page-content {
+    padding: var(--space-4);
+    overflow-x: hidden;
+  }
+  .card-header {
+    padding: var(--space-4);
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .card-body { padding: var(--space-4); }
+  .filter-bar {
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+  .filter-bar > select {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+  .employee-table-toolbar {
+    flex-wrap: wrap;
+    align-items: stretch !important;
+  }
+  .employee-table-search {
+    max-width: none !important;
+    flex: 1 1 100%;
+  }
+  .employee-table-count {
+    width: 100%;
+  }
   .kpi-grid { grid-template-columns: 1fr 1fr; }
   .wow-strip { grid-template-columns: 1fr 1fr; }
   .dq-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
+  .header {
+    padding: 0 var(--space-3);
+    gap: var(--space-2);
+  }
+  .header-actions {
+    gap: var(--space-2);
+  }
+  .page-content { padding: var(--space-3); }
   .kpi-grid { grid-template-columns: 1fr; }
   .wow-strip { grid-template-columns: 1fr; }
 }

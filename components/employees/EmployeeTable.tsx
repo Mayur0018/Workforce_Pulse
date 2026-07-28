@@ -62,16 +62,20 @@ export default function EmployeeTable({ summaries, benchmarks }: EmployeeTablePr
   return (
     <>
       {/* Search + info */}
-      <div style={{ display: 'flex', gap: 'var(--space-3)', marginBottom: 'var(--space-4)', alignItems: 'center' }}>
+      <div
+        className="employee-table-toolbar"
+        style={{ display: 'flex', gap: 'var(--space-3)', marginBottom: 'var(--space-4)', alignItems: 'center' }}
+      >
         <input
+          className="employee-table-search"
           type="text"
           placeholder="Search name, role, department…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ maxWidth: 320 }}
+          style={{ width: '100%', maxWidth: 320 }}
           id="employee-search"
         />
-        <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>
+        <span className="employee-table-count" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>
           {sorted.length} of {summaries.length} employees
         </span>
       </div>
